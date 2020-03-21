@@ -19,6 +19,7 @@ sock_TCP.connect((SERVER_ADDRESS, TCP_PORT))
 #UDP socket to receive song requests
 sock_UDP = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock_UDP.bind(('', UDP_PORT))
+sock_UDP.settimeout(0.5)
 
 
 #sock.send() mehtod can be used to send inforamtion to the socket on the server
@@ -35,7 +36,11 @@ print(":: Receiving Music Data")
 packets = []
 
 for i in range(num_incoming_packets):
-    packet, address = sock_UDP.recvfrom(4096)
+    try:
+        packet, address = sock_UDP.recvfrom(4096)
+    except socket.timeout:
+        print(":: UDP socket timeout")
+        break
     packets.append(packet)
 
 
