@@ -7,9 +7,22 @@ an amateur music streamer using TCP and UDP sockets
 03/21/20
 """
 import os
+import sys
 import time
 import glob
 import socket
+
+
+#These can be configured accordingly
+HEADERSIZE = 30
+IP = ""
+TCP_PORT = 5764
+UDP_PORT = 9933
+
+if IP == "":
+    print("Error: Empty IP string")
+    print("::Please specify the IP for this server first")
+    sys.exit(1)
 
 
 def getAudioData(song_name):
@@ -25,11 +38,6 @@ def getAudioData(song_name):
     return (open(song_name, "rb"), os.stat(song_name).st_size)
 
 if __name__ == "__main__":
-
-    HEADERSIZE = 30
-    IP = "192.168.1.191"
-    TCP_PORT = 5764
-    UDP_PORT = 9933
 
     #create a UDP socket to send the audio information
     sock_UDP = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

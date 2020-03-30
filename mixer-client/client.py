@@ -6,10 +6,16 @@ from pydub import AudioSegment
 from pydub.playback import _play_with_simpleaudio
 
 
+#these should be configured accordingly
 HEADERSIZE = 30
-SERVER_ADDRESS = "192.168.1.191"
+SERVER_ADDRESS = ""
 TCP_PORT = 5764
 UDP_PORT = 9933
+
+if SERVER_ADDRESS = "":
+    print("Error: Empty Server Address")
+    print(":: Please specify server address")
+    sys.exit(1)
 
 
 def get_song_request():
