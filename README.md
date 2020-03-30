@@ -1,4 +1,4 @@
-# Mixer a simple music streaming app written in python
+# Mixer: a simple music streaming app written in python
 
 I had a bunch of mp3 files from my favorite artist on my computer and I thought
 it would be a good idea and educational experience to stream them over to my laptop using my raspberry pi.
